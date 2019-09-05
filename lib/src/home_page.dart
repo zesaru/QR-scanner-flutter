@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qrreaderapp/src/direcciones_page.dart';
 import 'package:qrreaderapp/src/mapas_page.dart';
+import 'package:qrcode_reader/qrcode_reader.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -26,10 +27,26 @@ class _HomePageState extends State<HomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.filter_center_focus),
-        onPressed: () {},
+        onPressed: _scanQR,
         backgroundColor: Theme.of(context).primaryColor,
       ),
     );
+  }
+
+  Future _scanQR() async {
+    // https://fernando-herrera.com
+    // geo:40.724233047051705,-74.00731459101564
+    String futureString = '';
+    try {
+      futureString = await new QRCodeReader().scan();
+    } catch (e) {
+      futureString = e.toString();
+    }
+    print('futureString: $futureString');
+
+    if (futureString != null) {
+      print('Tenemos informacion');
+    }
   }
 
   Widget _callpage(int paginaActual) {
