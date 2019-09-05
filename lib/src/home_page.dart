@@ -12,8 +12,23 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('QR scanner'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.delete_forever),
+            onPressed: () {},
+          )
+        ],
+      ),
       body: _callpage(currentIndex),
       bottomNavigationBar: _crearBottomNavigationBar(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.filter_center_focus),
+        onPressed: () {},
+        backgroundColor: Theme.of(context).primaryColor,
+      ),
     );
   }
 
