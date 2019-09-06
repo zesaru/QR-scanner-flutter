@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:qrreaderapp/src/direcciones_page.dart';
-import 'package:qrreaderapp/src/mapas_page.dart';
-import 'package:qrcode_reader/qrcode_reader.dart';
+
+import 'direcciones_page.dart';
+import 'mapas_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
