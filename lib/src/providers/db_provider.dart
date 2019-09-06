@@ -4,6 +4,7 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:qrreaderapp/src/models/scan_model.dart';
 import 'package:sqflite/sqflite.dart';
+export 'package:qrreaderapp/src/models/scan_model.dart';
 
 class DBProvider {
   static Database _database;
