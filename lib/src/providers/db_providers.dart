@@ -80,4 +80,17 @@ class DBProvider {
         where: 'id = ?', whereArgs: [nuevoScan.id]);
     return res;
   }
+
+  // Eliminar registros
+  Future<int> deleteScan(int id) async {
+    final db = await database;
+    final res = await db.delete('Scans', where: 'id = ?', whereArgs: [id]);
+    return res;
+  }
+
+  Future<int> deleteAll() async {
+    final db = await database;
+    final res = await db.rawDelete('DELETE FROM Scans');
+    return res;
+  }
 }
