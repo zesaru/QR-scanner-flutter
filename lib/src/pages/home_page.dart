@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:qrreaderapp/src/bloc/scans_bloc.dart';
 import 'package:qrreaderapp/src/models/scan_model.dart';
+import 'package:qrreaderapp/src/utils/utils.dart' as utils;
 
 import 'direcciones_page.dart';
 import 'mapas_page.dart';
@@ -55,6 +58,13 @@ class _HomePageState extends State<HomePage> {
     if (futureString != null) {
       final scan = ScanModel(valor: futureString);
       scansBloc.agregarScan(scan);
+
+      if (Platform.isIOS) {
+        Future.delayed(Duration(milliseconds: 750));
+        utils.abrisScan(scan);
+      } else {
+        utils.abrisScan(scan);
+      }
     }
   }
 
