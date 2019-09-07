@@ -11,6 +11,7 @@ class ScansBloc {
 
   ScansBloc._internal() {
     //Obtener scans de la base de datos
+    obtenerScans();
   }
 
   final _scansController = StreamController<List<ScanModel>>.broadcast();
@@ -19,5 +20,24 @@ class ScansBloc {
 
   dispose() {
     _scansController?.close();
+  }
+
+  obtenerScans() async {
+    _scansController.sink.add(await DBProvider.db.getTodosScans());
+  }
+
+  agregarScan(ScanModel scan) async {
+    await DBProvider.db.nuevoScan(scan);
+    obtenerScans();
+  }
+
+  borrarScan(int id) async {
+    await DBProvider.db.deleteScan(id);
+    obtenerScans();
+  }
+
+  borrarScanTODOS() async {
+    await DBProvider.db.deleteAll();
+    obtenerScans();
   }
 }
