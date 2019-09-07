@@ -9,7 +9,7 @@ import 'package:qrreaderapp/src/utils/utils.dart' as utils;
 import 'direcciones_page.dart';
 import 'mapas_page.dart';
 
-import 'package:qrcode_reader/qrcode_reader.dart';
+//import 'package:qrcode_reader/qrcode_reader.dart';
 
 class HomePage extends StatefulWidget {
   @override
