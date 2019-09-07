@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qrreaderapp/src/providers/db_provider.dart';
 
 import 'direcciones_page.dart';
 import 'mapas_page.dart';
@@ -10,6 +11,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +38,7 @@ class _HomePageState extends State<HomePage> {
   Future _scanQR() async {
     // https://fernando-herrera.com
     // geo:40.724233047051705,-74.00731459101564
-    String futureString = '';
+    String futureString = 'https://fernando-herrera.com';
     // try {
     //   futureString = await new QRCodeReader().scan();
     // } catch (e) {
@@ -44,9 +46,10 @@ class _HomePageState extends State<HomePage> {
     // }
     // print('futureString: $futureString');
 
-    // if (futureString != null) {
-    //   print('Tenemos informacion');
-    // }
+    if (futureString != null) {
+      final scan = ScanModel(valor: futureString);
+      DBProvider.db.nuevoScan(scan);
+    }
   }
 
   Widget _callpage(int paginaActual) {
