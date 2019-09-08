@@ -34,7 +34,7 @@ class MapasPage extends StatelessWidget {
                 utils.abrisScan(context, scans[i]);
               },
               leading: Icon(
-                Icons.cloud_queue,
+                Icons.map,
                 color: Theme.of(context).primaryColor,
               ),
               title: Text(scans[i].valor),
