@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:qrcode_reader/qrcode_reader.dart';
 
 import 'package:qrreaderapp/src/bloc/scans_bloc.dart';
 import 'package:qrreaderapp/src/models/scan_model.dart';
@@ -47,13 +48,12 @@ class _HomePageState extends State<HomePage> {
   _scanQR(BuildContext context) async {
     // https://fernando-herrera.com
     // geo:40.724233047051705,-74.00731459101564
-    String futureString = 'https://fernando-herrera.com';
-    // try {
-    //   futureString = await new QRCodeReader().scan();
-    // } catch (e) {
-    //   futureString = e.toString();
-    // }
-    // print('futureString: $futureString');
+    String futureString;
+    try {
+      futureString = await new QRCodeReader().scan();
+    } catch (e) {
+      futureString = e.toString();
+    }
 
     if (futureString != null) {
       final scan = ScanModel(valor: futureString);
@@ -74,6 +74,9 @@ class _HomePageState extends State<HomePage> {
         return MapasPage();
       case 1:
         return DireccionesPage();
+
+      default:
+        return MapasPage();
     }
   }
 
